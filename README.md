@@ -20,7 +20,7 @@ Once you've turned on WSL, you'll need to reboot your machine to complete setup.
 
 Once your credentials have been created, you can start WSL anytime by typing `wsl` into command line or powershell.
 
-#### Configure User Admin [Optional]
+## Configure User Admin [Optional]
 
 If you want to automate the IPP startup process, you'll need to make sure your WSL user account has adequate permissions to run bash scripts automatically without requiring credentials.
 
@@ -46,15 +46,17 @@ The [IPP Sample Software](https://github.com/istopwg/ippsample) leverages [Apple
 
 ### Download and [Install IPP](https://stackoverflow.com/questions/10115876/how-to-simulate-an-ipp-printer)
 
-1.  Within WSL, type and execute `wget https://github.com/KurtPfeifle/ippsample/releases/download/continuous/ippsample-x86_64.AppImage`
+1.  I usually deploy to the root directory.  Type `cd` to access your root directoy.
 
-2.  After the ippsample appimage finishes installing, execute the following commands:
+2.  Within WSL, type and execute `wget https://github.com/KurtPfeifle/ippsample/releases/download/continuous/ippsample-x86_64.AppImage`
+
+3.  After the ippsample appimage finishes installing, execute the following commands:
 
 *  `chmod a+x ippsample-x86_64.AppImage`
 
 *  `mv ippsample-x86_64.AppImage ippsample`
 
-3.  Finally, install cups: `sudo apt install cups-ipp-utils`
+4.  Finally, install cups: `sudo apt install cups-ipp-utils`
 
 #### Configure Systemd
 
