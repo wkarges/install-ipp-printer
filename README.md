@@ -49,6 +49,8 @@ The [IPP Sample Software](https://github.com/istopwg/ippsample) leverages [Apple
 1.  Within WSL, type and execute `wget https://github.com/KurtPfeifle/ippsample/releases/download/continuous/ippsample-x86_64.AppImage`
 
 2.  After the ippsample appimage finishes installing, execute the following commands:
+
 ..*  `chmod a+x ippsample-x86_64.AppImage`
-..*  `mv ippsample-x86_64.AppImage ippsample`
+
+*  `mv ippsample-x86_64.AppImage ippsample`
 
