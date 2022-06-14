@@ -70,4 +70,42 @@ For some reason, WSL doesn't use System, even if it's the distribution default. 
 
 ## Using IPP Sample
 
-Having installed IPP and configured Systemd, we're now ready to create a print server emulator.
+Having installed IPP and configured Systemd, we're now ready to create a print server emulator.  For our purposes we only need one line of code to start the `ippserver`.  If you'd like to explore more of the ippsample capabilities, a [full video tutorial and documentation can be found here](https://stackoverflow.com/questions/10115876/how-to-simulate-an-ipp-printer).
+
+The syntax for the ippserver command below, I've also included a complete command we can use for testing purposes.
+
+*  **Syntax to create print server** *Note: the `./` may not be necessary depending on your Linux distribution*
+**  `./ippsample ippserver -v -p <yourPortNumber> "<yourIPPServerName>"
+
+*  **Test command**
+**  `./ippsample ippserver -v -p 22222 "testPrintServer"`
+
+Once you've executed the create print server command, you can open up a separate WSL terminal and execute this script to confirm it's working.
+
+*  `./ippsample ipptool -t -v ipp://<yourHostname>.local:22222/ipp/print get-printer-attributes.test`
+
+## Adding the Printer(s)
+
+I haven't yet figured out the process for automatically adding printer drivers.  For this example I've manually downloaded and installed the [HP Universal Printing PS](https://support.hp.com/us-en/drivers/selfservice/hp-universal-print-driver-series-for-windows/503548/model/3271558) driver.  Make sure you install in dynamic mode.
+
+![dynamicMode.png](screenshots/dynamicMode.png)
+
+Next we'll need to add the printer driver, printer port, and finally we'll add a printer.  We'll run these commands in **PowerShell** and you'll need the printer-uri from the ippserver we spun up in the previous section.
+
+![printerURI.png](screenshots/printerURI.png)
+
+In the next section we'll use the Powershell Print Management commands.  You can view the full documentation on these commands in [Microsoft Docs](https://docs.microsoft.com/en-us/powershell/module/printmanagement/?view=windowsserver2022-ps).
+
+#### Adding the Printer Driver
+
+The name of the HP printer we're using is **HP Universal Printing PS** but if you're trying to use a different printer you can view a list of available drivers on the machine with the powershell command `Get-PrinterDriver`
+
+![getPrinterDriver.png](screenshots/getPrinterDriver.png)
+
+In order to add the printer driver, we'll need to use the following command:
+
+*  **Syntax:**
+**  `Add-PrinterDriver -Name "<yourPrinterDriverName>"`
+*  **Test Command**
+**  `Add-PrinterDriver -Name "HP Universal Printing PS"`
+
