@@ -10,7 +10,7 @@ This is a setup tutorial for deploying and using an IPP printer on a Windows dev
 
 1.  The easiest way to install WSL is to simply open command line and execute the command `wsl --install`.
 
-Alternatively, you can Navigate to Windows Settings -> For Developers -> [Toggle On] Developer Mode.  Then open Add or Remove Programs and check **Windows Subsystem for Linux**.
+Alternatively, you can navigate to *Windows Settings -> For Developers -> **[Toggle On]** Developer Mode*.  Then open *Add or Remove Programs* and check **Windows Subsystem for Linux**.
 
 ![turnOnWSL.png](screenshots/turnOnWSL.png)
 
@@ -39,3 +39,16 @@ In order to do so I just gave my WSL user full root permissions.  If you want to
 ![visudo.png](screenshots/visudo.png)
 
 ## Install and Configure IPP
+
+The [IPP Sample Software](https://github.com/istopwg/ippsample) leverages [Apple's Bonjour Print Service](https://developer.apple.com/bonjour/) so you'll need to [download and install](https://support.apple.com/kb/dl999?locale=en_US) it on your machine.  Once installed, confirm the Bonjour Service is running and set to Automatic Start.
+
+![bonjour.png](screenshots/bonjour.png)
+
+### Download and [Install IPP](https://stackoverflow.com/questions/10115876/how-to-simulate-an-ipp-printer)
+
+1.  Within WSL, type and execute `wget https://github.com/KurtPfeifle/ippsample/releases/download/continuous/ippsample-x86_64.AppImage`
+
+2.  After the ippsample appimage finishes installing, execute the following commands:
+..*  `chmod a+x ippsample-x86_64.AppImage`
+..*  `mv ippsample-x86_64.AppImage ippsample`
+
