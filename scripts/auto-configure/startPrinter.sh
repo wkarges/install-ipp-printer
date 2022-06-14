@@ -1,0 +1,1 @@
+./ippsample ippserver -v -p 22222 "testPrinter"

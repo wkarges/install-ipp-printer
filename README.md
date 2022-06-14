@@ -20,7 +20,7 @@ Once you've turned on WSL, you'll need to reboot your machine to complete setup.
 
 Once your credentials have been created, you can start WSL anytime by typing `wsl` into command line or powershell.
 
-### Configure User Admin [Optional]
+#### Configure User Admin [Optional]
 
 If you want to automate the IPP startup process, you'll need to make sure your WSL user account has adequate permissions to run bash scripts automatically without requiring credentials.
 
@@ -32,7 +32,7 @@ In order to do so I just gave my WSL user full root permissions.  If you want to
 
 3.  Type `visudo` to access the sudoers file editor.
 
-4.  Navigate to the section titled, "Allow memebers of a group sudo to execute any command" and type `%your_username ALL=(ALL) ALL`
+4.  Navigate to the section titled, "Allow memebers of a group sudo to execute any command" and type `%your_username ALL=(ALL) ALL`.  *(Note) the % sign might not be needed depending on your Linx distribution*
 
 5.  Press `ctrl + x` then `y` to save and exit the file.
 
@@ -56,7 +56,7 @@ The [IPP Sample Software](https://github.com/istopwg/ippsample) leverages [Apple
 
 3.  Finally, install cups: `sudo apt install cups-ipp-utils`
 
-### Configure Systemd
+#### Configure Systemd
 
 For some reason, WSL doesn't use System, even if it's the distribution default.  We'll have to run a few commands to configure systemd support.  If you want to learn more about this, feel free to read this answer on [Ask Ubuntu](https://askubuntu.com/questions/1379425/system-has-not-been-booted-with-systemd-as-init-system-pid-1-cant-operate).
 
@@ -67,3 +67,7 @@ For some reason, WSL doesn't use System, even if it's the distribution default. 
   sudo systemctl start avahi-daemon
   sudo systemctl enable avahi-daemon
 ```
+
+## Using IPP Sample
+
+Having installed IPP and configured Systemd, we're now ready to create a print server emulator.
