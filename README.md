@@ -50,7 +50,20 @@ The [IPP Sample Software](https://github.com/istopwg/ippsample) leverages [Apple
 
 2.  After the ippsample appimage finishes installing, execute the following commands:
 
-..*  `chmod a+x ippsample-x86_64.AppImage`
+*  `chmod a+x ippsample-x86_64.AppImage`
 
 *  `mv ippsample-x86_64.AppImage ippsample`
 
+3.  Finally, install cups: `sudo apt install cups-ipp-utils`
+
+### Configure Systemd
+
+For some reason, WSL doesn't use System, even if it's the distribution default.  We'll have to run a few commands to configure systemd support.  If you want to learn more about this, feel free to read this answer on [Ask Ubuntu](https://askubuntu.com/questions/1379425/system-has-not-been-booted-with-systemd-as-init-system-pid-1-cant-operate).
+
+```
+  sudo apt install avahi-daemon
+  sudo -b unshare --pid --fork --mount-proc /lib/systemd/systemd --system-unit=basic.target
+  sudo -E nsenter --all -t $(pgrep -xo systemd) runuser -P -l $USER -c "exec $SHELL"
+*  sudo systemctl start avahi-daemon
+*  sudo systemctl enable avahi-daemon
+```
