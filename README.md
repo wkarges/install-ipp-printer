@@ -32,7 +32,9 @@ In order to do so I just gave my WSL user full root permissions.  If you want to
 
 3.  Type `visudo` to access the sudoers file editor.
 
-4.  Navigate to the section titled, "Allow memebers of a group sudo to execute any command" and type `%your_username ALL=(ALL) ALL`.  *(Note) the % sign might not be needed depending on your Linx distribution*
+4.  Navigate to the section titled, "Allow memebers of a group sudo to execute any command" and type `%your_username ALL=(ALL) ALL`.
+
+*  *(Note) the % sign might not be needed depending on your Linx distribution*
 
 5.  Press `ctrl + x` then `y` to save and exit the file.
 
