@@ -76,11 +76,11 @@ Having installed IPP and configured Systemd, we're now ready to create a print s
 
 The syntax for the ippserver command below, I've also included a complete command we can use for testing purposes.
 
-*  **Syntax to create print server** *Note: the `./` may not be necessary depending on your Linux distribution*
+*  **Syntax to create print server:** *Note: the `./` may not be necessary depending on your Linux distribution*
 
-`./ippsample ippserver -v -p <yourPortNumber> "<yourIPPServerName>"
+`./ippsample ippserver -v -p <yourPortNumber> "<yourIPPServerName>"`
 
-*  **Test command** `./ippsample ippserver -v -p 22222 "testPrintServer"`
+*  **Test command:** `./ippsample ippserver -v -p 22222 "testPrintServer"`
 
 Once you've executed the create print server command, you can open up a separate WSL terminal and execute this script to confirm it's working.
 
@@ -107,7 +107,7 @@ The name of the HP printer we're using is **HP Universal Printing PS** but if yo
 In order to add the printer driver, we'll need to use the following command:
 
 *  **Syntax:** `Add-PrinterDriver -Name "<yourPrinterDriverName>"`
-*  **Test Command** `Add-PrinterDriver -Name "HP Universal Printing PS"`
+*  **Test Command:** `Add-PrinterDriver -Name "HP Universal Printing PS"`
 
 #### Adding the Printer Port
 
@@ -115,7 +115,7 @@ Next we'll add the printer port, this is where we'll need your ipp printer-uri f
 
 *  **Syntax:** `Add-PrinterPort -Name '<yourPortName>' -PrinterHostAddress 'ipp://<yourIPPServerDomain>:<yourIppServerPortNumber>/ipp/print'`
 
-*  **Test Command** `Add-PrinterPort -Name 'HP_Universal:' -PrinterHostAddress 'ipp://<yourIPPServerDomain>:22222/ipp/print'`
+*  **Test Command:** `Add-PrinterPort -Name 'HP_Universal:' -PrinterHostAddress 'ipp://<yourIPPServerDomain>:22222/ipp/print'`
 
 To verify the Printer port is successfully added, type `Get-PrinterPort`
 
